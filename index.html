@@ -1018,6 +1018,531 @@ footer {
   .footer-bottom { flex-direction: column; text-align: center; }
   .footer-disclaimer { text-align: center; }
 }
+
+/* ═══════════════════════════════════════════
+   PREMIUM CSS PRODUCT COVERS
+═══════════════════════════════════════════ */
+
+/* ── Shared cover shell ── */
+.cover-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Grid lines background */
+.cv-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.cv-grid-gold {
+  background-image:
+    linear-gradient(rgba(198,152,46,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,152,46,0.07) 1px, transparent 1px);
+}
+
+/* Glow orbs */
+.cv-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(52px);
+  pointer-events: none;
+  animation: orbFloat 6s ease-in-out infinite;
+}
+.cv-orb-green  { width:220px;height:220px; background:rgba(88,207,88,0.18);  top:-30px;  right:-30px; }
+.cv-orb-blue   { width:200px;height:200px; background:rgba(60,140,255,0.16); top:-20px;  left:-20px;  animation-delay: 2s; }
+.cv-orb-gold   { width:240px;height:240px; background:rgba(198,152,46,0.15); bottom:-40px; left:-20px; animation-delay: 1s; }
+
+@keyframes orbFloat {
+  0%,100% { transform: translate(0,0); }
+  50%      { transform: translate(8px,-12px); }
+}
+
+/* ── COVER 1 — FREE (Dark Forest / Electric Green) ── */
+.cover-free {
+  background: linear-gradient(145deg, #060E06 0%, #0A140A 50%, #060A08 100%);
+  border-bottom: 1px solid rgba(88,207,88,0.2);
+}
+
+.cv-bolt {
+  position: absolute;
+  right: 22px; top: 16px;
+  width: 36px;
+  opacity: 0.85;
+  animation: boltPulse 2.4s ease-in-out infinite;
+}
+@keyframes boltPulse {
+  0%,100% { opacity: 0.85; filter: drop-shadow(0 0 4px #58CF58); }
+  50%      { opacity: 0.5;  filter: drop-shadow(0 0 12px #58CF58); }
+}
+
+/* 7 day pills row */
+.cv-days {
+  position: absolute;
+  top: 18px; left: 16px;
+  display: flex; gap: 5px;
+}
+.cv-day {
+  width: 24px; height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(88,207,88,0.3);
+  background: rgba(88,207,88,0.06);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(88,207,88,0.5);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.cv-day.active {
+  background: rgba(88,207,88,0.18);
+  border-color: rgba(88,207,88,0.7);
+  color: #58CF58;
+  box-shadow: 0 0 8px rgba(88,207,88,0.2);
+}
+.cover-free:hover .cv-day { background: rgba(88,207,88,0.28); }
+
+/* Shared title block */
+.cv-title-block {
+  position: absolute;
+  bottom: 44px; left: 20px;
+  z-index: 2;
+}
+.cv-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(88,207,88,0.6);
+  margin-bottom: 4px;
+}
+.cv-main-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 46px; font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 2px 24px rgba(88,207,88,0.2);
+  margin-bottom: 4px;
+}
+.cv-sub-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(88,207,88,0.6);
+}
+
+/* Bottom tag bar */
+.cv-bottom-tag {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 8px 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.cv-free-tag  { background: rgba(88,207,88,0.12);  color: #58CF58;  border-top: 1px solid rgba(88,207,88,0.25); }
+.cv-blue-tag  { background: rgba(60,140,255,0.1);   color: #64B4FF;  border-top: 1px solid rgba(60,140,255,0.2);  }
+.cv-gold-tag  { background: rgba(198,152,46,0.12);  color: #C6982E;  border-top: 1px solid rgba(198,152,46,0.25); }
+
+/* Hover shimmer effect */
+.cover-wrap::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 3;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.prod-card:hover .cover-wrap::before { transform: translateX(100%); }
+
+/* ── COVER 2 — ZINC ($17) (Deep Navy / Ice Blue) ── */
+.cover-zinc {
+  background: linear-gradient(145deg, #050810 0%, #080D18 55%, #050810 100%);
+  border-bottom: 1px solid rgba(60,140,255,0.18);
+}
+
+.cv-hexgrid {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 1;
+}
+
+/* Periodic table box */
+.cv-periodic-box {
+  position: absolute;
+  top: 50%; right: 24px;
+  transform: translateY(-60%);
+  width: 74px; height: 82px;
+  border: 1.5px solid rgba(100,180,255,0.5);
+  background: rgba(60,140,255,0.07);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 6px 4px;
+  box-shadow: 0 0 20px rgba(60,140,255,0.15), inset 0 0 14px rgba(60,140,255,0.05);
+  animation: elementPulse 3s ease-in-out infinite;
+}
+@keyframes elementPulse {
+  0%,100% { box-shadow: 0 0 20px rgba(60,140,255,0.15), inset 0 0 14px rgba(60,140,255,0.05); }
+  50%      { box-shadow: 0 0 32px rgba(60,140,255,0.28), inset 0 0 18px rgba(60,140,255,0.1); }
+}
+.cv-atomic-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 400;
+  color: rgba(100,180,255,0.6);
+  align-self: flex-start;
+  padding-left: 4px;
+  letter-spacing: 0.05em;
+}
+.cv-symbol {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: #64B4FF;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.cv-element-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 9px; font-weight: 300;
+  color: rgba(100,180,255,0.5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cv-atomic-mass {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  color: rgba(100,180,255,0.4);
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.cv-title-zinc { bottom: 44px; left: 20px; }
+.cv-title-blue {
+  color: #FFFFFF;
+  text-shadow: 0 2px 24px rgba(60,140,255,0.25);
+}
+
+/* ── COVER 3 — PLAYBOOK ($47) (Obsidian / Gold) ── */
+.cover-playbook {
+  background: linear-gradient(145deg, #080704 0%, #0D0B06 50%, #080704 100%);
+  border-bottom: 1px solid rgba(198,152,46,0.3);
+}
+
+.cv-progress-ring {
+  position: absolute;
+  width: 160px; height: 160px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -58%);
+  opacity: 0.9;
+  animation: ringRotate 12s linear infinite;
+}
+@keyframes ringRotate {
+  from { transform: translate(-50%,-58%) rotate(0deg); }
+  to   { transform: translate(-50%,-58%) rotate(360deg); }
+}
+
+.cv-crown {
+  position: absolute;
+  width: 56px;
+  top: 50%; right: 22px;
+  transform: translateY(-68%);
+  filter: drop-shadow(0 0 8px rgba(198,152,46,0.4));
+  animation: crownGlow 2.8s ease-in-out infinite;
+}
+@keyframes crownGlow {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(198,152,46,0.4)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(232,184,75,0.7)); }
+}
+
+.cv-title-playbook { bottom: 44px; left: 20px; }
+.cv-title-gold {
+  color: #FFFFFF;
+  text-shadow: 0 2px 28px rgba(198,152,46,0.3);
+}
+
+/* 13-week progress dots */
+.cv-weeks {
+  position: absolute;
+  top: 14px; left: 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.cv-week-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.3em;
+  color: rgba(198,152,46,0.4);
+  text-transform: uppercase;
+}
+.cv-week-dots { display: flex; gap: 4px; flex-wrap: wrap; max-width: 120px; }
+.cv-wdot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(198,152,46,0.25);
+  background: rgba(198,152,46,0.05);
+}
+.cv-wdot.wdot-done {
+  background: rgba(198,152,46,0.55);
+  border-color: #C6982E;
+  box-shadow: 0 0 5px rgba(198,152,46,0.3);
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM TESTIMONIAL STYLES
+═══════════════════════════════════════════ */
+.testi-card-premium {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+}
+.testi-card-premium::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.testi-card-premium:hover {
+  border-color: rgba(198,152,46,0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.testi-card-premium:hover::before { opacity: 1; }
+
+.testi-top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 22px 0;
+}
+.testi-flag-country {
+  display: flex; align-items: center; gap: 7px;
+}
+.testi-flag { font-size: 18px; }
+.testi-country {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+}
+.testi-verified {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(198,152,46,0.08);
+  border: 1px solid rgba(198,152,46,0.2);
+  padding: 4px 10px;
+}
+
+.testi-stars-row {
+  display: flex; align-items: center; gap: 3px;
+  padding: 14px 22px 0;
+}
+.tstar {
+  color: var(--gold);
+  font-size: 14px;
+  animation: starPop 0.4s ease both;
+}
+.tstar:nth-child(1){animation-delay:0.05s}
+.tstar:nth-child(2){animation-delay:0.1s}
+.tstar:nth-child(3){animation-delay:0.15s}
+.tstar:nth-child(4){animation-delay:0.2s}
+.tstar:nth-child(5){animation-delay:0.25s}
+@keyframes starPop {
+  from{transform:scale(0) rotate(-20deg);opacity:0}
+  to{transform:scale(1) rotate(0deg);opacity:1}
+}
+.testi-score {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--gold);
+  margin-left: 6px;
+  letter-spacing: 0.05em;
+}
+
+.testi-quote-premium {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.8;
+  padding: 16px 22px 20px;
+  position: relative;
+}
+.testi-quote-premium::before {
+  content: '\201C';
+  font-size: 56px;
+  color: rgba(198,152,46,0.15);
+  position: absolute;
+  top: 2px; left: 14px;
+  line-height: 1;
+  font-family: 'Playfair Display', serif;
+  pointer-events: none;
+}
+
+.testi-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+  margin: 0 22px;
+}
+
+.testi-author-premium {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 22px 22px;
+}
+.testi-avatar-premium {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 13px;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.tav-green { background: rgba(88,207,88,0.12); border: 1.5px solid rgba(88,207,88,0.4); color: #58CF58; }
+.tav-blue  { background: rgba(60,140,255,0.12); border: 1.5px solid rgba(60,140,255,0.4); color: #64B4FF; }
+.tav-gold  { background: rgba(198,152,46,0.12); border: 1.5px solid rgba(198,152,46,0.4); color: #C6982E; }
+
+.testi-author-info { flex: 1; }
+.testi-name-premium {
+  font-size: 14px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.testi-role-premium {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.testi-journey {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(198,152,46,0.5);
+}
+.testi-product-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  flex-shrink: 0;
+}
+.tpt-free { background: rgba(88,207,88,0.1);  color: #58CF58; border: 1px solid rgba(88,207,88,0.25); }
+.tpt-zinc { background: rgba(60,140,255,0.1);  color: #64B4FF; border: 1px solid rgba(60,140,255,0.25); }
+.tpt-gold { background: rgba(198,152,46,0.1);  color: #C6982E; border: 1px solid rgba(198,152,46,0.25); }
+
+/* Trust strip */
+.testi-trust-strip {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 48px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  padding: 24px 32px;
+}
+.tts-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 32px;
+}
+.tts-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.tts-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.tts-sep {
+  color: var(--border);
+  font-size: 24px;
+  font-weight: 100;
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCT CARD CLICK ANIMATIONS
+═══════════════════════════════════════════ */
+
+/* Ripple container */
+.prod-card { isolation: isolate; }
+
+/* Click ripple effect */
+.card-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleOut 0.7s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+.cover-free  .card-ripple { background: rgba(88,207,88,0.2); }
+.cover-zinc  .card-ripple { background: rgba(60,140,255,0.2); }
+.cover-playbook .card-ripple { background: rgba(198,152,46,0.2); }
+@keyframes rippleOut {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Card click press effect */
+.prod-card:active { transform: scale(0.97) translateY(0) !important; transition: transform 0.1s !important; }
+
+/* Cover click flash */
+.cover-wrap.flash-green  { animation: flashGreen  0.4s ease; }
+.cover-wrap.flash-blue   { animation: flashBlue   0.4s ease; }
+.cover-wrap.flash-gold   { animation: flashGold   0.4s ease; }
+@keyframes flashGreen { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.25) drop-shadow(0 0 18px rgba(88,207,88,0.6))} }
+@keyframes flashBlue  { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.25) drop-shadow(0 0 18px rgba(60,140,255,0.6))} }
+@keyframes flashGold  { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.25) drop-shadow(0 0 18px rgba(198,152,46,0.7))} }
+
+/* Magnetic hover tilt */
+.prod-card {
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), border-color 0.3s, box-shadow 0.35s;
+  transform-style: preserve-3d;
+}
+.prod-card:hover {
+  box-shadow: 0 28px 60px rgba(0,0,0,0.6);
+}
+
+/* Cover particle burst on click */
+.click-particle {
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 20;
+  animation: particleBurst 0.6s ease-out forwards;
+}
+@keyframes particleBurst {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -1164,13 +1689,35 @@ footer {
     <!-- CARD 1: FREE -->
     <div class="prod-card reveal">
       <div class="prod-badge free-badge">FREE</div>
-      <div class="prod-img-wrap">
-        <img
-          src="https://public-files.gumroad.com/variants/88kpwt3cvzj3bz5xzr6tgb3k2gn1/baaca413-5be1-4b7f-83bd-9ed0de36a6e3"
-          alt="7-Day Testosterone Reset Cheat Sheet"
-          onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80&fit=crop&crop=top'"
-        >
-        <div class="prod-img-overlay"></div>
+      <!-- CSS PREMIUM COVER: 7-Day Reset -->
+      <div class="cover-wrap cover-free">
+        <!-- Animated grid lines -->
+        <div class="cv-grid"></div>
+        <!-- Glow orb -->
+        <div class="cv-orb cv-orb-green"></div>
+        <!-- Lightning bolt SVG -->
+        <svg class="cv-bolt" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="35,0 10,55 30,55 25,100 50,45 30,45" fill="#58CF58" opacity="0.9"/>
+          <polygon points="35,0 10,55 30,55 25,100 50,45 30,45" fill="none" stroke="#A0FF90" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <!-- 7-day pill indicators -->
+        <div class="cv-days">
+          <span class="cv-day active">M</span>
+          <span class="cv-day active">T</span>
+          <span class="cv-day active">W</span>
+          <span class="cv-day active">T</span>
+          <span class="cv-day active">F</span>
+          <span class="cv-day active">S</span>
+          <span class="cv-day active">S</span>
+        </div>
+        <!-- Main title -->
+        <div class="cv-title-block">
+          <div class="cv-eyebrow">TESTOFUELLAB™</div>
+          <div class="cv-main-title">7-DAY<br>RESET</div>
+          <div class="cv-sub-title">CHEAT SHEET</div>
+        </div>
+        <!-- Bottom tag -->
+        <div class="cv-bottom-tag cv-free-tag">⚡ ZERO COST — START TODAY</div>
       </div>
       <div class="prod-body">
         <div class="prod-type">Free Starter Resource</div>
@@ -1195,13 +1742,38 @@ footer {
     <!-- CARD 2: $17 -->
     <div class="prod-card reveal reveal-delay-1">
       <div class="prod-badge paid-badge">$17</div>
-      <div class="prod-img-wrap">
-        <img
-          src="https://public-files.gumroad.com/variants/4m2gvubt6j1qyjg5pu1iyarjvbzn/baaca413-5be1-4b7f-83bd-9ed0de36a6e3"
-          alt="Zinc & Testosterone Ebook"
-          onerror="this.src='https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=700&q=80&fit=crop&crop=top'"
-        >
-        <div class="prod-img-overlay"></div>
+      <!-- CSS PREMIUM COVER: Zinc Ebook -->
+      <div class="cover-wrap cover-zinc">
+        <div class="cv-grid"></div>
+        <div class="cv-orb cv-orb-blue"></div>
+        <!-- Hexagon molecular grid -->
+        <svg class="cv-hexgrid" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- hex shapes scattered -->
+          <polygon points="60,30 80,20 100,30 100,50 80,60 60,50" fill="none" stroke="rgba(100,180,255,0.25)" stroke-width="1"/>
+          <polygon points="110,10 130,0 150,10 150,30 130,40 110,30" fill="none" stroke="rgba(100,180,255,0.2)" stroke-width="1"/>
+          <polygon points="170,25 190,15 210,25 210,45 190,55 170,45" fill="none" stroke="rgba(100,180,255,0.18)" stroke-width="1"/>
+          <polygon points="30,70 50,60 70,70 70,90 50,100 30,90" fill="none" stroke="rgba(100,180,255,0.15)" stroke-width="1"/>
+          <polygon points="200,65 220,55 240,65 240,85 220,95 200,85" fill="none" stroke="rgba(100,180,255,0.2)" stroke-width="1"/>
+          <polygon points="80,130 100,120 120,130 120,150 100,160 80,150" fill="none" stroke="rgba(100,180,255,0.15)" stroke-width="1"/>
+          <polygon points="160,140 180,130 200,140 200,160 180,170 160,160" fill="none" stroke="rgba(100,180,255,0.12)" stroke-width="1"/>
+          <!-- Connection lines -->
+          <line x1="80" y1="40" x2="110" y2="20" stroke="rgba(100,180,255,0.12)" stroke-width="1" stroke-dasharray="3,4"/>
+          <line x1="150" y1="20" x2="170" y2="35" stroke="rgba(100,180,255,0.12)" stroke-width="1" stroke-dasharray="3,4"/>
+          <line x1="100" y1="50" x2="80" y2="70" stroke="rgba(100,180,255,0.1)" stroke-width="1" stroke-dasharray="3,4"/>
+        </svg>
+        <!-- Periodic table Zn element -->
+        <div class="cv-periodic-box">
+          <div class="cv-atomic-num">30</div>
+          <div class="cv-symbol">Zn</div>
+          <div class="cv-element-name">Zinc</div>
+          <div class="cv-atomic-mass">65.38</div>
+        </div>
+        <div class="cv-title-block cv-title-zinc">
+          <div class="cv-eyebrow" style="color:#64B4FF;">TESTOFUELLAB™</div>
+          <div class="cv-main-title cv-title-blue">ZINC &amp;<br>TESTO</div>
+          <div class="cv-sub-title" style="color:rgba(100,180,255,0.7);">THE COMPLETE GUIDE</div>
+        </div>
+        <div class="cv-bottom-tag cv-blue-tag">🔬 DEEP-DIVE PROTOCOL — 23 PAGES</div>
       </div>
       <div class="prod-body">
         <div class="prod-type">Deep-Dive Ebook</div>
@@ -1226,13 +1798,49 @@ footer {
     <!-- CARD 3: $47 FEATURED -->
     <div class="prod-card featured reveal reveal-delay-2">
       <div class="prod-badge paid-badge" style="top:42px;">$47</div>
-      <div class="prod-img-wrap" style="margin-top:29px;">
-        <img
-          src="https://public-files.gumroad.com/variants/2m0a8xq3i3j7zf3bz5xzr6tgb3k2gn1/baaca413-5be1-4b7f-83bd-9ed0de36a6e3"
-          alt="90-Day TestoFuel System Playbook"
-          onerror="this.src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=700&q=80&fit=crop&crop=top'"
-        >
-        <div class="prod-img-overlay"></div>
+      <!-- CSS PREMIUM COVER: 90-Day Playbook -->
+      <div class="cover-wrap cover-playbook" style="margin-top:29px;">
+        <div class="cv-grid cv-grid-gold"></div>
+        <div class="cv-orb cv-orb-gold"></div>
+        <!-- Radial progress ring -->
+        <svg class="cv-progress-ring" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(198,152,46,0.12)" stroke-width="2"/>
+          <circle cx="80" cy="80" r="68" fill="none" stroke="url(#goldGrad)" stroke-width="3"
+            stroke-dasharray="427" stroke-dashoffset="42" stroke-linecap="round"
+            transform="rotate(-90 80 80)"/>
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#C6982E"/>
+              <stop offset="100%" style="stop-color:#E8B84B"/>
+            </linearGradient>
+          </defs>
+          <!-- Inner tick marks for 90 days / 13 weeks -->
+          <circle cx="80" cy="80" r="55" fill="none" stroke="rgba(198,152,46,0.08)" stroke-width="1"/>
+        </svg>
+        <!-- Crown/shield icon -->
+        <svg class="cv-crown" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,5 55,25 75,10 65,50 15,50 5,10 25,25" fill="none" stroke="#C6982E" stroke-width="2" stroke-linejoin="round" opacity="0.9"/>
+          <polygon points="40,5 55,25 75,10 65,50 15,50 5,10 25,25" fill="rgba(198,152,46,0.08)"/>
+          <circle cx="40" cy="34" r="5" fill="#C6982E" opacity="0.7"/>
+        </svg>
+        <div class="cv-title-block cv-title-playbook">
+          <div class="cv-eyebrow" style="color:#C6982E;">TESTOFUELLAB™</div>
+          <div class="cv-main-title cv-title-gold">90-DAY<br>SYSTEM</div>
+          <div class="cv-sub-title" style="color:rgba(198,152,46,0.65);">COMPLETE PLAYBOOK</div>
+        </div>
+        <!-- Week progress dots -->
+        <div class="cv-weeks">
+          <span class="cv-week-label">WEEK</span>
+          <div class="cv-week-dots">
+            <span class="cv-wdot wdot-done"></span><span class="cv-wdot wdot-done"></span>
+            <span class="cv-wdot wdot-done"></span><span class="cv-wdot wdot-done"></span>
+            <span class="cv-wdot wdot-done"></span><span class="cv-wdot wdot-done"></span>
+            <span class="cv-wdot"></span><span class="cv-wdot"></span>
+            <span class="cv-wdot"></span><span class="cv-wdot"></span>
+            <span class="cv-wdot"></span><span class="cv-wdot"></span><span class="cv-wdot"></span>
+          </div>
+        </div>
+        <div class="cv-bottom-tag cv-gold-tag">🏆 COMPLETE TRANSFORMATION — 40 PAGES</div>
       </div>
       <div class="prod-body">
         <div class="prod-type">Complete Transformation System</div>
@@ -1296,44 +1904,110 @@ footer {
 <section class="testimonials-section">
   <div class="testimonials-inner">
     <div class="testimonials-header reveal">
-      <div class="sec-label" style="justify-content:center;margin-bottom:12px;">Social Proof</div>
-      <h2 class="sec-h2">Real Men. Real Results.</h2>
+      <div class="sec-label" style="justify-content:center;margin-bottom:12px;">Global Results</div>
+      <h2 class="sec-h2" style="text-align:center;">Men Worldwide.<br><em>One System.</em></h2>
+      <p style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:15px;margin-top:10px;">Over 10 years of hormonal optimization research distilled into these protocols.</p>
     </div>
+
     <div class="testimonials-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">Started with the free cheat sheet and within two weeks I felt noticeably different. Better sleep, more energy in the gym. This stuff is legit.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">RK</div>
-          <div>
-            <div class="testi-name">Rahul K.</div>
-            <div class="testi-role">Free Cheat Sheet → $47 Playbook</div>
+
+      <!-- TESTI 1 — JAMES (UK) -->
+      <div class="testi-card testi-card-premium reveal">
+        <div class="testi-top-bar">
+          <div class="testi-flag-country">
+            <span class="testi-flag">🇬🇧</span>
+            <span class="testi-country">United Kingdom</span>
           </div>
+          <div class="testi-verified">✦ VERIFIED</div>
+        </div>
+        <div class="testi-stars-row">
+          <span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span>
+          <span class="testi-score">5.0</span>
+        </div>
+        <div class="testi-quote-premium">
+          "I've tried every protocol online — TRT forums, YouTube doctors, Reddit stacks. Nothing gave me a structured starting point until TestoFuelLab. Two weeks on the Reset and I stopped hitting snooze. Six weeks in — leaner, sharper, sleeping like I did at 22. This is the real deal."
+        </div>
+        <div class="testi-divider"></div>
+        <div class="testi-author-premium">
+          <div class="testi-avatar-premium tav-green">JC</div>
+          <div class="testi-author-info">
+            <div class="testi-name-premium">James Crawford</div>
+            <div class="testi-role-premium">Marketing Director, London</div>
+            <div class="testi-journey">Free Reset → Zinc Guide → 90-Day System</div>
+          </div>
+          <div class="testi-product-tag tpt-free">ALL 3</div>
         </div>
       </div>
-      <div class="testi-card reveal reveal-delay-1">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">The Zinc ebook broke down something I've been confused about for years. The dosing protocol alone was worth way more than $17. Very impressed.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">JM</div>
-          <div>
-            <div class="testi-name">James M.</div>
-            <div class="testi-role">Zinc &amp; Testosterone Ebook</div>
+
+      <!-- TESTI 2 — LEE (USA) -->
+      <div class="testi-card testi-card-premium reveal reveal-delay-1">
+        <div class="testi-top-bar">
+          <div class="testi-flag-country">
+            <span class="testi-flag">🇺🇸</span>
+            <span class="testi-country">United States</span>
           </div>
+          <div class="testi-verified">✦ VERIFIED</div>
+        </div>
+        <div class="testi-stars-row">
+          <span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span>
+          <span class="testi-score">5.0</span>
+        </div>
+        <div class="testi-quote-premium">
+          "The Zinc ebook genuinely shocked me. I've been supplementing zinc for 3 years completely wrong — wrong form, wrong timing, no cofactors. The science in this guide is graduate-level but explained like a coach talking to you. My morning testosterone feel has completely shifted. Worth 10x the price."
+        </div>
+        <div class="testi-divider"></div>
+        <div class="testi-author-premium">
+          <div class="testi-avatar-premium tav-blue">LH</div>
+          <div class="testi-author-info">
+            <div class="testi-name-premium">Lee Harrison</div>
+            <div class="testi-role-premium">Software Engineer, Austin TX</div>
+            <div class="testi-journey">Zinc &amp; Testosterone Ebook</div>
+          </div>
+          <div class="testi-product-tag tpt-zinc">$17</div>
         </div>
       </div>
-      <div class="testi-card reveal reveal-delay-2">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">On week 7 of the 90-Day System. My mood, focus, and energy levels are at a different level. This is the most structured protocol I've followed.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">AS</div>
-          <div>
-            <div class="testi-name">Arjun S.</div>
-            <div class="testi-role">90-Day TestoFuel System</div>
+
+      <!-- TESTI 3 — ALAN (AUS) -->
+      <div class="testi-card testi-card-premium reveal reveal-delay-2">
+        <div class="testi-top-bar">
+          <div class="testi-flag-country">
+            <span class="testi-flag">🇦🇺</span>
+            <span class="testi-country">Australia</span>
           </div>
+          <div class="testi-verified">✦ VERIFIED</div>
+        </div>
+        <div class="testi-stars-row">
+          <span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span>
+          <span class="testi-score">5.0</span>
+        </div>
+        <div class="testi-quote-premium">
+          "90-Day System is the only program I've ever actually finished. The week-by-week structure removes every excuse. Week 4 I hit a personal gym best. Week 8 my wife asked what changed. Week 11 I got a promotion at work — coincidence? I don't think so. Hormones affect everything. This system delivers."
+        </div>
+        <div class="testi-divider"></div>
+        <div class="testi-author-premium">
+          <div class="testi-avatar-premium tav-gold">AW</div>
+          <div class="testi-author-info">
+            <div class="testi-name-premium">Alan Whitfield</div>
+            <div class="testi-role-premium">Operations Manager, Sydney</div>
+            <div class="testi-journey">90-Day TestoFuel System</div>
+          </div>
+          <div class="testi-product-tag tpt-gold">$47</div>
         </div>
       </div>
+
     </div>
+
+    <!-- Trust strip below testimonials -->
+    <div class="testi-trust-strip reveal">
+      <div class="tts-item"><span class="tts-num">10+</span><span class="tts-label">Years Research</span></div>
+      <div class="tts-sep">|</div>
+      <div class="tts-item"><span class="tts-num">40+</span><span class="tts-label">Countries</span></div>
+      <div class="tts-sep">|</div>
+      <div class="tts-item"><span class="tts-num">100%</span><span class="tts-label">Natural Protocols</span></div>
+      <div class="tts-sep">|</div>
+      <div class="tts-item"><span class="tts-num">★ 5.0</span><span class="tts-label">Average Rating</span></div>
+    </div>
+
   </div>
 </section>
 
@@ -1458,10 +2132,7 @@ function animateCounter(el) {
 }
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      animateCounter(e.target);
-      counterObserver.unobserve(e.target);
-    }
+    if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); }
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
@@ -1477,6 +2148,68 @@ function toggleFAQ(btn) {
 /* ── NAV SHRINK ── */
 window.addEventListener('scroll', () => {
   document.querySelector('.nav').style.padding = window.scrollY > 60 ? '12px 40px' : '18px 40px';
+});
+
+/* ══════════════════════════════════════════
+   PRODUCT CARD CLICK ANIMATIONS
+══════════════════════════════════════════ */
+const cardConfigs = [
+  { selector: '.cover-free',     flashClass: 'flash-green', color: 'rgba(88,207,88,0.7)'   },
+  { selector: '.cover-zinc',     flashClass: 'flash-blue',  color: 'rgba(60,140,255,0.7)'  },
+  { selector: '.cover-playbook', flashClass: 'flash-gold',  color: 'rgba(198,152,46,0.85)' },
+];
+
+cardConfigs.forEach(({ selector, flashClass, color }) => {
+  const cover = document.querySelector(selector);
+  if (!cover) return;
+  const card = cover.closest('.prod-card');
+
+  /* Click ripple + flash + particles */
+  cover.addEventListener('click', function(e) {
+    const rect = cover.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    /* Ripple */
+    const ripple = document.createElement('div');
+    ripple.className = 'card-ripple';
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${x - size/2}px;top:${y - size/2}px;background:${color.replace('0.7','0.2').replace('0.85','0.2')}`;
+    cover.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+
+    /* Flash */
+    cover.classList.remove(flashClass);
+    void cover.offsetWidth;
+    cover.classList.add(flashClass);
+    cover.addEventListener('animationend', () => cover.classList.remove(flashClass), { once: true });
+
+    /* Particles */
+    for (let i = 0; i < 8; i++) {
+      const p = document.createElement('div');
+      p.className = 'click-particle';
+      const angle = (i / 8) * 360;
+      const dist  = 40 + Math.random() * 30;
+      const tx    = Math.cos(angle * Math.PI/180) * dist;
+      const ty    = Math.sin(angle * Math.PI/180) * dist;
+      p.style.cssText = `left:${x}px;top:${y}px;background:${color};--tx:${tx}px;--ty:${ty}px;animation-delay:${i*0.03}s`;
+      cover.appendChild(p);
+      p.addEventListener('animationend', () => p.remove());
+    }
+  });
+
+  /* Magnetic 3D tilt on hover */
+  card.addEventListener('mousemove', function(e) {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width  / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    card.style.transform = `translateY(-6px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg)`;
+  });
+  card.addEventListener('mouseleave', function() {
+    card.style.transform = '';
+  });
 });
 </script>
 </body>
